@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+
+  # MYSQL
+  mysqldb:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    container_name: mysqldb
+    ports:
+      - 3308:3309
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPassword
+      MYSQL_DATABASE: Backoffice
+      MYSQL_USER: MainUser
+      MYSQL_PASSWORD: MainPassword
+    volumes: 
+      - ./data/mysql:/var/lib/mysql
+    networks:
+     - network
+
+  # NODEJS
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    container_name: codeChallenge
+    depends_on:
+      - mysqldb
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/usr/src/app
+    stdin_open: true
+    tty: true
+    networks:
+     - network
+
+volumes: 
+  db-config:
+  db-data:
+
+networks:
+  network:
+    driver: bridge
