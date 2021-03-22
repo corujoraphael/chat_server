@@ -20,6 +20,18 @@ const doc = {
             name: "X-API-KEY",  // name of the header, query parameter or cookie
             description: "any description..."
         }
+    },
+    definitions: {
+        User: {
+            name: "Jhon Doe",
+            email: "jhondoe@gmail.com",
+        },
+        Errors: {
+            errors: {
+                message: 'string',
+                errCode: 'string'
+            }
+        }
     }
 }
 
