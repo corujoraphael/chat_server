@@ -26,7 +26,7 @@ app.use('/auth', authRoute)
 
 const AuthController = require('./controllers/auth')
 app.use(function(req, res, next) {   
-    var token = req.headers["authorization"].replace("Bearer ", "")
+    var token =  req.headers["authorization"] ? req.headers["authorization"].replace("Bearer ", "") : null
     const success = result => {
     	if(result){
     		req.USER_ID             = result
