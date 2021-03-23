@@ -1,2 +1,5 @@
 node_modules
 npm-debug.log
+socket/node_modules
+package-lock.json
+socket/package-lock.json

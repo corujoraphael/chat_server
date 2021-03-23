@@ -16,22 +16,45 @@ const doc = {
     securityDefinitions: {
         apiKeyAuth:{
             type: "apiKey",
-            in: "header",       // can be "header", "query" or "cookie"
-            name: "X-API-KEY",  // name of the header, query parameter or cookie
-            description: "any description..."
+            in: "header",
+            name: "Authorization",
+            description: "Auth Token"
         }
     },
     definitions: {
-        User: {
-            name: "Jhon Doe",
-            email: "jhondoe@gmail.com",
-        },
         Errors: {
             errors: {
                 message: 'string',
                 errCode: 'string'
             }
-        }
+        },
+        User: {
+            id: 1,
+            name: 'Joe doe',
+            "email": "teste@email.com",
+            "createdAt": "2021-03-23T16:58:30.000Z"
+        },
+        Room: {
+            id: 1,
+            name: 'Joe doe',
+            description: "Descricao da sala",
+            owner_id: 1,
+            user_to_id: 2,
+            "createdAt": "2021-03-23T16:58:30.000Z"
+        },
+        Rooms: [ 
+            { $ref: "#/definitions/Room" }
+        ],
+        Message: {
+            id: 1,
+            name: 'Joe doe',
+            "email": "teste@email.com",
+            "createdAt": "2021-03-23T16:58:30.000Z"
+        },
+        Messages: [ 
+            { $ref: "#/definitions/Message" }
+        ]
+
     }
 }
 
