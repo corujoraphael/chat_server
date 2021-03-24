@@ -6,8 +6,9 @@ COPY package*.json ./
 
 RUN npm install --silent
 RUN npm install pm2 -g
-# RUN npm ci --only=production
-
-COPY . .
+RUN pm2 start swagger.js
 EXPOSE 8080
-CMD [ "pm2", "start", "swagger.js" ]
+
+WORKDIR /usr/src/app/socket
+RUN pm2 start index.js
+EXPOSE 3001
