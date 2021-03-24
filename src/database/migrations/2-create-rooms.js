@@ -17,7 +17,7 @@ module.exports = {
 				allowNull: true,
 				type: DataTypes.TEXT,
 			},
-			owner: {
+			owner_id: {
 				allowNull: false,
 				type: DataTypes.INTEGER,
 				references: {
