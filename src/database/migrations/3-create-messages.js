@@ -20,7 +20,6 @@ module.exports = {
 			room_id: {
 				allowNull: false,
 				type: DataTypes.INTEGER,
-				unique: true,
 				references: {
 					model: 'rooms',
 					key: 'id'
